@@ -1,6 +1,7 @@
 
 import styles from "./MenuFuncionario.module.css"
 
+import {link} from "react-router-dom"
 
 const MenuFuncionario = () => {
 
@@ -8,10 +9,15 @@ const MenuFuncionario = () => {
         <div>
        <nav className={`navbar navbar-expand-lg navbar-light bg-light p-2 rounded shadow-sm w-100 ${styles.menu}`}>
         
-        <a className={`navbar-brand ${styles.logo}`} href="/pizzaria/funcionario/home">
+        <a className={`navbar-brand ${styles.itemMenu}`} href="/pizzaria/funcionario/home">
           Home
         </a>
-
+        <link
+            to="/Home"
+            className={`nav-link ${styles.itemMenu}`}
+            >
+            Home
+            </link>
         {/* Botão Hamburguer para telas menores */}
         <button
           className="navbar-toggler"
@@ -28,19 +34,34 @@ const MenuFuncionario = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto">
             <li className="nav-item active">
-              <a className={`nav-link ${styles.itemMenu}`} href="/pizzaria/funcionario/produtos">
-                Produtos
-              </a>
+      
+            <link
+            to="/produtos"
+            className={`nav-link ${styles.itemMenu}`}
+            >
+            Produtos
+            </link>
             </li>
+
+
             <li className="nav-item">
-              <a className={`nav-link ${styles.itemMenu}`} href="/pizzaria/funcionario/categorias">
-                Categorias
-              </a>
+            <link
+            to="/Categorias"
+            className={`nav-link ${styles.itemMenu}`}
+            >
+            Categorias
+            </link>
             </li>
+
+
+
             <li className="nav-item">
-              <a className={`nav-link ${styles.itemMenu}`} href="/pizzaria/funcionario/estoques">
-                Estoque
-              </a>
+            <link
+            to="/Estoques"
+            className={`nav-link ${styles.itemMenu}`}
+            >
+            Estoque
+            </link>
             </li>
 
             {/* Dropdown Menu */}
