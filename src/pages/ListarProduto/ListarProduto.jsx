@@ -1,11 +1,17 @@
-import MenuFuncionario from "../MenuFuncionario/MenuFuncionario";
+import MenuFuncionario from "../MenuFuncionario/MenuFuncionario"
 
-const ListarProduto = () => {
+const ListarProduto = () =>{
+
     return (
         <div className="container">
-            <MenuFuncionario/>
+             <MenuFuncionario/>
+
+             <p>Listar Produtos</p>
+             
         </div>
     )
+
+
 }
 
-export default ListarProduto;
+export default ListarProduto
