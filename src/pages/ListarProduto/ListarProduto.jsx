@@ -44,12 +44,19 @@ const arrayProdutos = [
             {arrayProdutos.map((produto) => (
                 
                
-                    <tr>
-                <td style={{ fontSize: "13px" }}></td>
-                <td style={{ fontSize: "13px" }}>
-                     
+                    <tr key={produto.id}>
+                <td style={{ fontSize: "13px" }} >{produto.nome}</td>
+                <td style={{ fontSize: "13px" }}> 
+                    {
+                        new Intl.NumberFormat('pt-BR', { 
+                            style: 'currency', 
+                            currency: 'BRL' 
+                        }).format(produto.preco)
+                    }
+
                 </td>
-                <td style={{ fontSize: "13px" }}></td>
+                <td style={{ fontSize: "13px" }}> {produto.descricao} </td>
+                
                 <td className="text-center fs-6" style={{ width: "100px" }}>
                   {/* Botão de Editar */}
                   <button
