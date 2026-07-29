@@ -1,32 +1,8 @@
 import MenuFuncionario from "../MenuFuncionario/MenuFuncionario"
 
-
-
-const ListarProduto = () =>{
-const arrayProdutos = [
-    {
-        id: 1,
-        nome: "Pizza de Calabresa",
-        descricao: "Pizza de calabresa com borda recheada",
-        preco: 59.90
-    },
-    {
-        id: 2,
-        nome: "Pizza de Frango",
-        descricao: "Pizza de frango com catupiry",
-        preco: 65.00
-    },
-    {
-        id: 3,
-        nome: "Pizza de Mussarela",
-        descricao: "Pizza de mussarela com borda recheada",
-        preco: 55.00
-    }
-]
-
-
-    return (
-        <div className="container">
+const ListarCategoria = () => {
+  return (
+       <div className="container">
              <MenuFuncionario/>
 
       <div className="table-responsive">
@@ -80,9 +56,7 @@ const arrayProdutos = [
         </table>
       </div>             
     </div>
-    )
+  );
+};
 
-
-}
-
-export default ListarProduto
+export default ListarCategoria;

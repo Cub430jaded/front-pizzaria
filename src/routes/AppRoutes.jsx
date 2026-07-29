@@ -29,6 +29,10 @@ const AppRoutes = () =>{
              path="/produtos"
              element={<ListarProduto/>}
            />
+           <Route 
+             path="/categorias"
+             element={<ListarCategoria/>}
+           />
 
         </Routes>
      

@@ -40,7 +40,7 @@ const MenuFuncionario = () => {
 
             <li className="nav-item">
             <Link
-            to="/Categorias"
+            to="/categorias"
             className={`nav-link ${styles.itemMenu}`}
             >
             Categorias
