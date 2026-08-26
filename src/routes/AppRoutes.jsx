@@ -7,6 +7,8 @@ import {
 
 import HomeFuncionario from "../pages/HomeFuncionario/HomeFuncionario"
 import ListarProduto from "../pages/ListarProduto/ListarProduto"
+import ListarCategoria from "../pages/ListarCategoria/ListarCategoria"
+import NovoProduto from "../pages/NovoProduto/NovoProduto"
 
 //BrowserRouter: recarga a página toda, mas mantém o estado da aplicação.
 //HashRouter: Recarrega apenas partes necessárias, mas não mantém o estado da aplicação.
@@ -33,7 +35,10 @@ const AppRoutes = () =>{
              path="/categorias"
              element={<ListarCategoria/>}
            />
-
+            <Route 
+             path="/produtos/novo"
+             element={<NovoProduto/>}
+           />
         </Routes>
      
      </HashRouter>
