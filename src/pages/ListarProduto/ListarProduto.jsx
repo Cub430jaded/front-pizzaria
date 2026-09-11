@@ -50,12 +50,13 @@ e assim preencher o array de produtos que será exibido na tela do usuário.
 useEffect(() => {
  
   api
-    .get("/produto") //fazendo uma requisição GET para a rota /produto da API
+    .get("/produtos") //fazendo uma requisição GET para a rota /produto da API
      
     .then((response)=>{
 
- // :) deu certo, a API respondeu com os dados dos produtos
-      setProdutos(response.data) //setando o array de produtos com os dados que vieram da API
+      // :) deu certo, a API respondeu com os dados dos produtos
+      console.log(response.data.data) //exibindo no console os dados que vieram da API
+      setProdutos(response.data.data) //setando o array de produtos com os dados que vieram da API
     })
     .catch((error)=>{
     
@@ -66,7 +67,7 @@ useEffect(() => {
 
 }, [])
 
-
+    /*
   const arrayProdutos = [
     {
         id: 1,
@@ -87,7 +88,7 @@ useEffect(() => {
         preco: 55.00
     }
 ]
-
+*/
 
     return (
         <div className="container">
@@ -105,10 +106,9 @@ useEffect(() => {
           </thead>
           <tbody>
             
-            {arrayProdutos.map((produto) => (
-                
-               
-                    <tr key={produto.id}>
+            {produtos.map((produto) => (
+
+              <tr key={produto.id}>
                 <td style={{ fontSize: "13px" }} >{produto.nome}</td>
                 <td style={{ fontSize: "13px" }}> 
                     {
@@ -120,9 +120,9 @@ useEffect(() => {
 
                 </td>
                 <td style={{ fontSize: "13px" }}> {produto.descricao} </td>
-                
                 <td className="text-center fs-6" style={{ width: "100px" }}>
                   {/* Botão de Editar */}
+
                   <button
                     className="btn btn-sm btn-primary me-2">
                     <i className="fas fa-pencil-alt"></i>{" "}
@@ -144,20 +144,17 @@ useEffect(() => {
         </table>
       </div>           
 
-      <div className="text-center mt-3">
+      <div className="text-end mt-3">
         <Link
           to="/produtos/novo"
           className={`btn btn-success`}
           >
-            <i className="fas fa-plus">
-              </i> Novo Produto
+            <i className="fas fa-plus"></i> 
+            Novo Produto
           </Link>
       </div>
-
-
-
     </div>
-    )
+  )
 
 
 }
