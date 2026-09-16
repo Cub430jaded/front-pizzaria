@@ -107,15 +107,14 @@ useEffect(() => {
           <tbody>
             
             {produtos.map((produto) => (
-
               <tr key={produto.id}>
                 <td style={{ fontSize: "13px" }} >{produto.nome}</td>
                 <td style={{ fontSize: "13px" }}> 
                     {
-                        new Intl.NumberFormat('pt-BR', { 
-                            style: 'currency', 
-                            currency: 'BRL' 
-                        }).format(produto.preco)
+                        new Intl.NumberFormat("pt-BR", { 
+                            style: "currency", 
+                            currency: "BRL" ,
+                        }).format(produto.precoVenda)
                     }
 
                 </td>

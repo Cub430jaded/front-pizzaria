@@ -24,8 +24,6 @@ const NovoProduto = () => {
             .catch((error) => {
                 console.error(`Erro ao buscar a lista de categorias: ${error}`);
             });
-            
-
     }, [])
 
     const escolherCategoria = (e) => {
@@ -41,20 +39,19 @@ const NovoProduto = () => {
             tipo: "Grande",
             descricao: descricao,
             categoriaId: Number(categoriaId)
-        };
+        }
         try {
             const response = await api.post("/produtos", produto, {
-                "Content-Type": "application/json"
-            });
+                "Content-Type" : "application/json"
+            })
             alert(`${response.data.data.nome} cadastrado com sucesso!`)
-                //limpano os campos do formulário
+                //limpando os campos do formulário
                 setNome("")
                 setPrecoVenda("")
                 setDescricao("")
             
         }catch (error) {
-            console.error(`Erro ao cadastrar produto error ${error}`);
-
+            console.error(`Erro ao cadastrar produto error ${error}`)
         }
     }
 
@@ -62,6 +59,7 @@ const NovoProduto = () => {
         <div className="container">
 
             <MenuFuncionario />
+            
           <form onSubmit={enviarProduto} className="container-fluid p-4">
             <div className="mb-3">
                 <label className="form-label">Nome:</label>
@@ -118,7 +116,8 @@ const NovoProduto = () => {
             <button type="submit" className="btn btn-primary w-100">
             Adicionar Produto
             </button>
-            </form>
+
+        </form>
 
 
         </div>
