@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
 
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import MenuFuncionario from "../MenuFuncionario/MenuFuncionario"
 import CredentialUser from "../../components/CredentialUser"
+
+import Modal from "../../components/Modal"
+
 import api from "../../services/api"
 
 
@@ -35,6 +38,11 @@ Por que?? O objetivo é que esse array seja preenchido com os produtos que vem d
 
 */
 const [produtos, setProdutos] = useState([])
+
+const [isModalOpen, setIsModalOpen] = useState(false)
+const [idProdutoAExcluir, setIdProdutoAExcluir] = useState(null)
+
+const navigate = useNavigate();
 
 /* 
 useEffect: é um hook do React que permite executar efeitos colaterais em componentes funcionais.
@@ -68,6 +76,28 @@ useEffect(() => {
 
 
 }, [])
+
+const openModal = (id) =>{
+        setIdProdutoAExcluir(id)
+        setIsModalOpen(true)
+    }
+ 
+    const deleteProduto = async () => {
+        try {
+            const response = await api.delete(`/produtos/${idProdutoAExcluir}`)
+            alert(response.data.message)
+ 
+        setProdutos((produtosAtuais) =>
+            produtosAtuais.filter(
+                (produto) => produto.id !== idProdutoAExcluir
+            )
+        )
+    } catch (error) {
+        alert(`Não foi possível a exclusão do produto com o id ${idProdutoAExcluir}`)
+    }
+    setIsModalOpen(false)
+ 
+    }
 
     /*
   const arrayProdutos = [
@@ -125,16 +155,22 @@ useEffect(() => {
                 <td style={{ fontSize: "13px" }}> {produto.descricao} </td>
                 <td className="text-center fs-6" style={{ width: "100px" }}>
                   {/* Botão de Editar */}
-
                   <button
-                    className="btn btn-sm btn-primary me-2">
+                    className="btn btn-sm btn-primary me-2"
+                    onClick={()=>
+                      navigate(`/produtos/editar/${produto.id}`)
+                    }
+                    >
+                      
                     <i className="fas fa-pencil-alt"></i>{" "}
                     {/* Ícone de editar */}
                   </button>
 
                   {/* Botão de Excluir */}
                   <button
-                    className="btn btn-sm btn-danger">
+                    className="btn btn-sm btn-danger"
+                    onClick={() => openModal(produto.id)}
+                    >
                     <i className="fas fa-trash-alt"></i>{" "}
                     {/* Ícone de excluir */}
                   </button>
@@ -156,10 +192,13 @@ useEffect(() => {
             Novo Produto
           </Link>
       </div>
+      <Modal
+            isOpen={isModalOpen}
+            onClose={()=> setIsModalOpen(false)}
+            onConfirm={deleteProduto}
+            />
     </div>
   )
-
-
 }
 
 export default ListarProduto
